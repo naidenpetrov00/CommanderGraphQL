@@ -9,6 +9,6 @@ namespace CommanderGraphQL.Models
 		[Required]
 		public string Name { get; set; }
 
-		public string LicenseKey { get; set; }
+		public string? LicenseKey { get; set; }
 	}
 }

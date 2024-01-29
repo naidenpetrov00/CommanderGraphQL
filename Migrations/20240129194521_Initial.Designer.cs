@@ -11,8 +11,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CommanderGraphQL.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20240125172844_AddPlatformToDb")]
-    partial class AddPlatformToDb
+    [Migration("20240129194521_Initial")]
+    partial class Initial
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -33,7 +33,6 @@ namespace CommanderGraphQL.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<string>("LicenseKey")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Name")

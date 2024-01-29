@@ -5,7 +5,7 @@
 namespace CommanderGraphQL.Migrations
 {
     /// <inheritdoc />
-    public partial class AddPlatformToDb : Migration
+    public partial class Initial : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -17,7 +17,7 @@ namespace CommanderGraphQL.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    LicenseKey = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    LicenseKey = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {

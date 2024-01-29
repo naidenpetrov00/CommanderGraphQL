@@ -1,8 +1,10 @@
-using CommanderGraphQL.Data;
-using Microsoft.EntityFrameworkCore;
-
 namespace CommanderGraphQL
 {
+	using CommanderGraphQL.Data;
+	using CommanderGraphQL.GraphQL;
+
+	using Microsoft.EntityFrameworkCore;
+
 	public class Program
 	{
 		public static void Main(string[] args)
@@ -13,9 +15,13 @@ namespace CommanderGraphQL
 				options.UseSqlServer(builder.Configuration.GetConnectionString("MSSQL")
 				));
 
+			builder.Services
+				.AddGraphQLServer()
+				.AddQueryType<Query>();
+
 			var app = builder.Build();
 
-			app.MapGet("/", () => "Hello World!");
+			app.MapGraphQL(); 
 
 			app.Run();
 		}
