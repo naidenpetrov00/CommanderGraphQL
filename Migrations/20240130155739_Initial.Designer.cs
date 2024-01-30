@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CommanderGraphQL.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20240129194521_Initial")]
+    [Migration("20240130155739_Initial")]
     partial class Initial
     {
         /// <inheritdoc />
