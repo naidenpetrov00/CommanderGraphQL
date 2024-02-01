@@ -2,13 +2,14 @@
 {
 	using CommanderGraphQL.Data;
 	using CommanderGraphQL.Models;
+
 	using Microsoft.EntityFrameworkCore;
 
 	public class Query
 	{
-		public IQueryable<Platform> GetPlatform([Service] AppDbContext dbContext)
+		public IQueryable<Platform> GetPlatform(AppDbContext dbContext)
 		{
-			return dbContext.Platforms.AsNoTracking();
+			return dbContext.Platforms;
 		}
 	}
 }
