@@ -19,7 +19,8 @@ namespace CommanderGraphQL
 			builder.Services
 				.AddGraphQLServer()
 				.RegisterDbContext<AppDbContext>(DbContextKind.Pooled)
-				.AddQueryType<Query>();
+				.AddQueryType<Query>()
+				.AddProjections();
 
 			var app = builder.Build();
 

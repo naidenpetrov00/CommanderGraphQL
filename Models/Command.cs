@@ -2,6 +2,7 @@
 {
 	using System.ComponentModel.DataAnnotations;
 
+	[GraphQLDescription("Represents any software or service that has a command line interface.")]
 	public class Command
 	{
 		public int Id { get; set; }
