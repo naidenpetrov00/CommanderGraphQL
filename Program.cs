@@ -5,6 +5,8 @@ namespace CommanderGraphQL
 	using Microsoft.EntityFrameworkCore;
 
 	using global::GraphQL.Server.Ui.Voyager;
+	using CommanderGraphQL.GraphQL.Platforms;
+	using CommanderGraphQL.GraphQL.Commands;
 
 	public class Program
 	{
@@ -20,6 +22,10 @@ namespace CommanderGraphQL
 				.AddGraphQLServer()
 				.RegisterDbContext<AppDbContext>(DbContextKind.Pooled)
 				.AddQueryType<Query>()
+				.AddType<PlatformType>()
+				.AddType<CommandType>()
+				.AddFiltering()
+				.AddSorting()
 				.AddProjections();
 
 			var app = builder.Build();
