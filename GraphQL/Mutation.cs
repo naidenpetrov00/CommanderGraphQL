@@ -34,5 +34,22 @@
 
 			return new AddCommandPayload(command);
 		}
+
+		public async Task<AddPlatformPayload> AddPlatformWithCommandsAsync(AddPlatformInput platformInput, ICollection<AddCommandInputWithoutId> commandInput, AppDbContext dbContext)
+		{
+			var platform = new Platform { Name = platformInput.Name, };
+			var commands = commandInput.Select(c => new Command
+			{
+				HowTo = c.HowTo,
+				CommandLine = c.CommandLine,
+				Platform = platform
+			}).ToList();
+			platform.Commands = commands;
+
+			dbContext.Platforms.Add(platform);
+			await dbContext.SaveChangesAsync();
+
+			return new AddPlatformPayload(platform);
+		}
 	}
 }
