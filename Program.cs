@@ -23,13 +23,17 @@ namespace CommanderGraphQL
 				.RegisterDbContext<AppDbContext>(DbContextKind.Pooled)
 				.AddQueryType<Query>()
 				.AddMutationType<Mutation>()
+				.AddSubscriptionType<Subscription>()
 				.AddType<PlatformType>()
 				.AddType<CommandType>()
 				.AddFiltering()
 				.AddSorting()
+				.AddInMemorySubscriptions()
 				.AddProjections();
 
 			var app = builder.Build();
+
+			app.UseWebSockets();
 
 			app.MapGraphQL();
 			app.UseGraphQLVoyager("/graphql-voyager", new VoyagerOptions()
